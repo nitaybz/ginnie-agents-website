@@ -1,159 +1,72 @@
-import { AgentEmblem } from "./agent-emblem";
-
-type Variant = "ops" | "marketing" | "sales" | "assistant" | "codereview" | "standup";
+import Image from "next/image";
 
 type Card = {
-  num: string;
-  variant: Variant;
-  title: string;
-  role: string;
-  blurb: string;
-  voice: string;
-  accent: "amber" | "steel" | "gold" | "mint" | "rose" | "plum";
+  src: string;
+  name: string;
+  tag: string;
 };
 
 const cards: Card[] = [
-  {
-    num: "01",
-    variant: "ops",
-    title: "the ops monitor",
-    role: "watches your stuff · doesn't drop the thread",
-    blurb:
-      "Keeps an eye on what's running, opens a task when something looks off, follows up until it's actually fixed.",
-    voice: "“host-04 disk 89%, was 71% yesterday — opened #214, monitoring.”",
-    accent: "mint",
-  },
-  {
-    num: "02",
-    variant: "marketing",
-    title: "the marketing operator",
-    role: "tracks ads · ships the safe wins",
-    blurb:
-      "Watches campaigns, makes the small obvious moves itself, drafts the risky ones for you, posts a short daily read.",
-    voice: "“ROAS 3.1, down 14% w/w. one campaign capped early. nothing to ship today.”",
-    accent: "amber",
-  },
-  {
-    num: "03",
-    variant: "sales",
-    title: "the sales analyst",
-    role: "reads your calls · spots the pattern",
-    blurb:
-      "Pulls calls and CRM data every morning, finds what's repeating across deals, asks the question that moves things forward.",
-    voice: "“5 of 7 lost deals mentioned price in the last 90s. proposal drafted in #sales.”",
-    accent: "steel",
-  },
-  {
-    num: "04",
-    variant: "assistant",
-    title: "the personal assistant",
-    role: "your second brain · in your DMs",
-    blurb:
-      "DM it anything. It remembers what you said in March and surfaces what you've been quietly worrying about.",
-    voice: "“you said you'd reply to A. by Tuesday. it's Tuesday. want me to draft?”",
-    accent: "plum",
-  },
-  {
-    num: "05",
-    variant: "codereview",
-    title: "the code-review companion",
-    role: "watches your PRs · in your own words",
-    blurb:
-      "Reads pull requests and reminds you of decisions you've already made — quoted back in the words you used.",
-    voice: "“we agreed last sprint not to swallow exceptions in the worker. this PR does it twice.”",
-    accent: "gold",
-  },
-  {
-    num: "06",
-    variant: "standup",
-    title: "the standup runner",
-    role: "DMs the team · writes the post",
-    blurb:
-      "DMs each teammate every morning, collects updates, turns them into one short post your team will actually read.",
-    voice: "“3 unblocked, 1 blocked on auth, 2 OOO. eng is on track for the friday demo.”",
-    accent: "rose",
-  },
+  { src: "/img/agents/ops.png", name: "the ops monitor", tag: "watches your stuff · doesn't drop the thread" },
+  { src: "/img/agents/marketing.png", name: "the marketing operator", tag: "tracks ads · ships the safe wins" },
+  { src: "/img/agents/sales.png", name: "the sales analyst", tag: "reads your calls · spots the pattern" },
+  { src: "/img/agents/assistant.png", name: "the personal assistant", tag: "your second brain · in your DMs" },
+  { src: "/img/agents/codereview.png", name: "the code-review companion", tag: "watches your PRs · in your own words" },
+  { src: "/img/agents/standup.png", name: "the standup runner", tag: "DMs the team · writes the post" },
 ];
-
-const accentMap: Record<Card["accent"], { ring: string; text: string; bg: string }> = {
-  amber: { ring: "ring-amber/40", text: "text-amber", bg: "bg-amber/10" },
-  steel: { ring: "ring-steel/40", text: "text-steel", bg: "bg-steel/10" },
-  gold: { ring: "ring-gold/40", text: "text-gold", bg: "bg-gold/10" },
-  mint: { ring: "ring-mint/40", text: "text-mint", bg: "bg-mint/10" },
-  rose: { ring: "ring-rose/40", text: "text-rose", bg: "bg-rose/10" },
-  plum: { ring: "ring-plum/40", text: "text-plum", bg: "bg-plum/10" },
-};
 
 export function AgentTypes() {
   return (
-    <section id="what-you-build" className="relative py-20 md:py-32">
+    <section id="what-you-build" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-[1300px] px-5 sm:px-6 md:px-10">
-        <header className="mb-12 grid grid-cols-1 items-end gap-8 md:mb-16 md:grid-cols-12">
-          <div className="md:col-span-7">
-            <div className="caret mb-5 font-mono text-[11px] uppercase tracking-[0.18em] text-paper-muted">
-              what you build
-            </div>
-            <h2 className="serif-soft text-[36px] font-light leading-[1.02] tracking-tight text-paper sm:text-[44px] md:text-[60px]">
-              Pick a job, sketch the agent,{" "}
-              <span className="serif-italic text-amber">ship it in Slack.</span>
-            </h2>
-          </div>
-          <p className="font-mono text-[13px] leading-relaxed text-paper-dim md:col-span-5">
-            About 15 minutes from idea to a working teammate. These are some
-            shapes that fit — none of them ship pre-built. You decide what
-            yours does and how it talks.
+        <header className="mx-auto mb-14 max-w-[760px] text-center md:mb-20">
+          <p className="mb-5 font-mono text-[10.5px] uppercase tracking-[0.2em] text-paper-muted">
+            what you build
+          </p>
+          <h2 className="serif text-balance text-[34px] font-light leading-[1.04] tracking-[-0.02em] text-paper sm:text-[44px] md:text-[56px]">
+            Pick a job, ship a{" "}
+            <span className="serif-italic text-amber">teammate.</span>
+          </h2>
+          <p className="mx-auto mt-5 max-w-[55ch] text-[15.5px] leading-relaxed text-paper-dim md:text-[16.5px]">
+            About 15 minutes from idea to a working agent in your Slack —
+            voice, schedule, memory, and all.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((c) => {
-            const a = accentMap[c.accent];
-            return (
-              <article
-                key={c.num}
-                className="group relative flex flex-col gap-5 bg-ink-2 p-6 transition-colors duration-300 hover:bg-ink-3 sm:p-7"
-              >
-                {/* Big illustration panel */}
+        <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {cards.map((c) => (
+            <li
+              key={c.src}
+              className="group relative overflow-hidden rounded-2xl border border-paper/8 bg-ink-2/60 transition hover:border-paper/15"
+            >
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <Image
+                  src={c.src}
+                  alt={c.name}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition duration-700 group-hover:scale-[1.03]"
+                />
                 <div
-                  className={`relative -mx-6 -mt-6 overflow-hidden rounded-t-[inherit] sm:-mx-7 sm:-mt-7 ${a.bg}`}
-                >
-                  <div
-                    className="dot-grid absolute inset-0 opacity-50"
-                    aria-hidden
-                  />
-                  <div className="relative aspect-[16/10] w-full">
-                    <AgentEmblem variant={c.variant} />
-                  </div>
-                  <span className="absolute right-4 top-4 font-mono text-[11px] uppercase tracking-[0.18em] text-paper-faint">
-                    /{c.num}
-                  </span>
-                </div>
+                  aria-hidden
+                  className="absolute inset-0 bg-gradient-to-t from-ink-2/80 via-ink-2/0 to-transparent"
+                />
+              </div>
+              <div className="space-y-1.5 px-5 py-5">
+                <h3 className="serif-italic text-[22px] font-medium leading-tight text-paper">
+                  {c.name}
+                </h3>
+                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-paper-muted">
+                  {c.tag}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
 
-                <div>
-                  <h3 className="serif-italic text-[24px] font-medium leading-tight text-paper">
-                    {c.title}
-                  </h3>
-                  <p className="mt-1 font-mono text-[10.5px] uppercase tracking-[0.18em] text-paper-muted">
-                    {c.role}
-                  </p>
-                </div>
-
-                <p className="text-[15px] leading-[1.55] text-paper-dim">{c.blurb}</p>
-
-                <blockquote
-                  className={`mt-auto rounded-lg border-l-2 bg-ink-3/60 p-4 font-mono text-[12.5px] leading-relaxed text-paper-dim`}
-                  style={{ borderLeftColor: `var(--color-${c.accent})` }}
-                >
-                  {c.voice}
-                </blockquote>
-              </article>
-            );
-          })}
-        </div>
-
-        <p className="mt-8 max-w-[60ch] font-mono text-[12.5px] leading-relaxed text-paper-muted md:mt-10">
-          ↳ you write what each one does — its voice, its rhythm, its
-          channel — in plain language. Claude Code wires up the rest.
+        <p className="mx-auto mt-12 max-w-[55ch] text-center font-mono text-[12.5px] leading-relaxed text-paper-muted md:mt-14">
+          ↳ none ship pre-built. You decide what each one does and how it
+          talks. Claude Code wires up the rest.
         </p>
       </div>
     </section>
