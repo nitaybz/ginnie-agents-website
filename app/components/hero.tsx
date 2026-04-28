@@ -1,33 +1,21 @@
-import Image from "next/image";
+import { SlackMockup } from "./slack-mockup";
 
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden">
-      {/* Backdrop image */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/img/hero.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        {/* layered gradients for legibility + depth */}
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_30%,rgba(8,8,10,0.05),rgba(8,8,10,0.55)_55%,rgba(8,8,10,0.92)_92%)]"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-ink to-transparent"
-        />
-      </div>
+      {/* Soft atmospheric backdrop (no longer image-based) */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_50%_-5%,rgba(255,122,45,0.18),transparent_60%),radial-gradient(40%_40%_at_85%_30%,rgba(122,169,255,0.10),transparent_60%),linear-gradient(180deg,#0c0c10_0%,#08080a_100%)]"
+      />
 
       {/* Top nav */}
       <header className="relative z-30">
         <div className="mx-auto flex max-w-[1300px] items-center justify-between px-5 pt-6 md:px-10 md:pt-8">
-          <a href="#top" className="inline-flex items-baseline gap-1.5 font-mono text-[13px] tracking-tight text-paper">
+          <a
+            href="#top"
+            className="inline-flex items-baseline gap-1.5 font-mono text-[13px] tracking-tight text-paper"
+          >
             <span className="text-amber">[</span>
             <span className="font-semibold">ginnie</span>
             <span className="text-paper-muted">/</span>
@@ -48,10 +36,10 @@ export function Hero() {
         </div>
       </header>
 
-      {/* Center content */}
+      {/* Headline column */}
       <div
         id="top"
-        className="relative mx-auto flex min-h-[88vh] max-w-[1100px] flex-col items-center justify-center px-5 pb-32 pt-24 text-center md:min-h-[90vh] md:px-10 md:pb-40 md:pt-32"
+        className="relative mx-auto max-w-[1100px] px-5 pt-14 text-center md:px-10 md:pt-20"
       >
         <span
           className="rise mb-6 inline-flex items-center gap-2 rounded-full border border-paper/15 bg-ink/30 px-3 py-1 font-mono text-[10.5px] uppercase tracking-[0.18em] text-paper-dim backdrop-blur"
@@ -62,7 +50,7 @@ export function Hero() {
         </span>
 
         <h1
-          className="rise serif text-balance text-[44px] font-light leading-[0.98] tracking-[-0.025em] text-paper sm:text-[64px] md:text-[84px]"
+          className="rise serif text-balance text-[42px] font-light leading-[1.0] tracking-[-0.025em] text-paper sm:text-[60px] md:text-[80px]"
           style={{ animationDelay: "100ms" }}
         >
           AI teammates{" "}
@@ -70,7 +58,7 @@ export function Hero() {
         </h1>
 
         <p
-          className="rise mt-7 max-w-[44ch] text-balance text-[17px] leading-[1.5] text-paper-dim md:text-[19px]"
+          className="rise mx-auto mt-6 max-w-[42ch] text-balance text-[16px] leading-[1.5] text-paper-dim sm:mt-7 md:text-[18px]"
           style={{ animationDelay: "200ms" }}
         >
           Open-source framework for AI coworkers — with names, voices, and
@@ -78,7 +66,7 @@ export function Hero() {
         </p>
 
         <div
-          className="rise mt-10 flex flex-col items-center gap-3 sm:flex-row sm:gap-4"
+          className="rise mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
           style={{ animationDelay: "300ms" }}
         >
           <a
@@ -100,6 +88,23 @@ export function Hero() {
           </a>
         </div>
       </div>
+
+      {/* Product mockup — centerpiece */}
+      <div
+        className="rise relative mx-auto mt-16 max-w-[1100px] px-5 pb-24 sm:mt-20 sm:px-6 md:mt-24 md:px-10 md:pb-32"
+        style={{ animationDelay: "420ms" }}
+      >
+        <SlackMockup />
+        <p className="mt-6 text-center font-mono text-[11.5px] uppercase tracking-[0.16em] text-paper-faint">
+          ↑ a real agent, posting in its own channel — no orchestration UI
+        </p>
+      </div>
+
+      {/* Soft fade-out edge to next section */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-ink"
+      />
     </section>
   );
 }
