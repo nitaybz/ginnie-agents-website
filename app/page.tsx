@@ -1,6 +1,6 @@
 import { Hero } from "./components/hero";
 import { AgentTypes } from "./components/agent-types";
-import { SetupDemo } from "./components/setup-demo";
+import { Quickstart } from "./components/quickstart";
 import { Architecture } from "./components/architecture";
 import { Footer } from "./components/footer";
 
@@ -9,7 +9,7 @@ export default function Home() {
     <main className="relative">
       <Hero />
       <AgentTypes />
-      <SetupDemo />
+      <Quickstart />
       <Architecture />
       <Footer />
     </main>

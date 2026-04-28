@@ -70,7 +70,7 @@ export function Hero() {
           style={{ animationDelay: "300ms" }}
         >
           <a
-            href="https://github.com/nitaybz/ginnie-agents#quickstart"
+            href="#start"
             target="_blank"
             rel="noreferrer noopener"
             className="group inline-flex items-center gap-2 rounded-full bg-amber px-6 py-3 font-mono text-[13px] font-medium tracking-tight text-ink transition hover:bg-amber-soft"

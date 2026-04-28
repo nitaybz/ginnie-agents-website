@@ -15,7 +15,7 @@ export function Architecture() {
         <div className="mx-auto max-w-[1000px]">
           {/* Diagram */}
           <div className="relative overflow-hidden rounded-2xl border border-paper/10 bg-ink-2/50 px-6 py-12 md:px-12 md:py-16">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-0">
+            <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:gap-0">
               <Node
                 label="Slack"
                 kicker="where they live"
@@ -89,26 +89,26 @@ function Node({
 
 function Connector() {
   return (
-    <div className="flex items-center justify-center md:col-span-1" aria-hidden>
+    <div className="flex items-center justify-center" aria-hidden>
       {/* Mobile: vertical down arrow */}
       <span className="font-mono text-paper-faint md:hidden">↓</span>
       {/* Desktop: horizontal dashed line */}
       <svg
-        className="hidden h-12 w-full md:block"
+        className="hidden h-12 w-full min-w-[60px] md:block"
         viewBox="0 0 200 48"
         preserveAspectRatio="none"
       >
         <line
-          x1="0"
+          x1="6"
           y1="24"
-          x2="200"
+          x2="194"
           y2="24"
           stroke="var(--color-paper)"
-          strokeOpacity="0.18"
+          strokeOpacity="0.22"
           strokeWidth="1"
           strokeDasharray="3 4"
         />
-        <circle cx="100" cy="24" r="2" fill="var(--color-amber)" />
+        <circle cx="100" cy="24" r="2.5" fill="var(--color-amber)" />
       </svg>
     </div>
   );
