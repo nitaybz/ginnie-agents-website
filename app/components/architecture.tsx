@@ -15,7 +15,7 @@ export function Architecture() {
         <div className="mx-auto max-w-[1000px]">
           {/* Diagram */}
           <div className="relative overflow-hidden rounded-2xl border border-paper/10 bg-ink-2/50 px-6 py-12 md:px-12 md:py-16">
-            <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:gap-0">
+            <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:gap-0">
               <Node
                 label="Slack"
                 kicker="where they live"
@@ -32,7 +32,7 @@ export function Architecture() {
               <Connector />
               <Node
                 label="Agent · Docker"
-                kicker="fresh, isolated, ephemeral"
+                kicker="fresh · isolated · ephemeral"
                 color="var(--color-steel)"
                 icon={<AgentIcon />}
               />
@@ -67,19 +67,24 @@ function Node({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center text-center md:col-span-1">
+    <div className="flex flex-col items-center text-center">
       <div
         className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-paper/10 bg-ink-3"
         style={{
           boxShadow: `0 0 0 1px ${color}22, 0 30px 60px -30px ${color}66`,
         }}
       >
-        <span className="absolute -inset-px rounded-2xl" style={{ background: `radial-gradient(60% 60% at 50% 0%, ${color}25, transparent 70%)` }} />
+        <span
+          className="absolute -inset-px rounded-2xl"
+          style={{
+            background: `radial-gradient(60% 60% at 50% 0%, ${color}25, transparent 70%)`,
+          }}
+        />
         <span className="relative" style={{ color }}>
           {icon}
         </span>
       </div>
-      <p className="serif mt-5 text-[22px] text-paper">{label}</p>
+      <p className="serif mt-5 text-[22px] leading-tight text-paper">{label}</p>
       <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-paper-muted">
         {kicker}
       </p>
@@ -89,26 +94,29 @@ function Node({
 
 function Connector() {
   return (
-    <div className="flex items-center justify-center" aria-hidden>
+    <div
+      className="flex items-center justify-center md:mt-[28px] md:self-start"
+      aria-hidden
+    >
       {/* Mobile: vertical down arrow */}
       <span className="font-mono text-paper-faint md:hidden">↓</span>
-      {/* Desktop: horizontal dashed line */}
+      {/* Desktop: horizontal dashed line, vertically centered on the 80px icon (icon center = 40px from top, line ≈ 28px + 12 = 40px) */}
       <svg
-        className="hidden h-12 w-full min-w-[60px] md:block"
-        viewBox="0 0 200 48"
+        className="hidden h-6 w-full min-w-[60px] md:block"
+        viewBox="0 0 200 24"
         preserveAspectRatio="none"
       >
         <line
           x1="6"
-          y1="24"
+          y1="12"
           x2="194"
-          y2="24"
+          y2="12"
           stroke="var(--color-paper)"
           strokeOpacity="0.22"
           strokeWidth="1"
           strokeDasharray="3 4"
         />
-        <circle cx="100" cy="24" r="2.5" fill="var(--color-amber)" />
+        <circle cx="100" cy="12" r="2.5" fill="var(--color-amber)" />
       </svg>
     </div>
   );

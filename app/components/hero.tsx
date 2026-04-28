@@ -71,8 +71,6 @@ export function Hero() {
         >
           <a
             href="#start"
-            target="_blank"
-            rel="noreferrer noopener"
             className="group inline-flex items-center gap-2 rounded-full bg-amber px-6 py-3 font-mono text-[13px] font-medium tracking-tight text-ink transition hover:bg-amber-soft"
           >
             Get started
