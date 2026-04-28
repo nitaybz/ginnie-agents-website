@@ -29,12 +29,6 @@ export function Nav() {
             </a>
             <a
               className="link-rule text-paper-dim hover:text-paper"
-              href="#memory"
-            >
-              memory
-            </a>
-            <a
-              className="link-rule hidden text-paper-dim hover:text-paper lg:inline-flex"
               href="#start"
             >
               quickstart

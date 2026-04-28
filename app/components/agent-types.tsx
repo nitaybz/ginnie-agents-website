@@ -1,6 +1,10 @@
+import { AgentEmblem } from "./agent-emblem";
+
+type Variant = "ops" | "marketing" | "sales" | "assistant" | "codereview" | "standup";
+
 type Card = {
   num: string;
-  glyph: string;
+  variant: Variant;
   title: string;
   role: string;
   blurb: string;
@@ -11,7 +15,7 @@ type Card = {
 const cards: Card[] = [
   {
     num: "01",
-    glyph: "◐",
+    variant: "ops",
     title: "the ops monitor",
     role: "watches your stuff · doesn't drop the thread",
     blurb:
@@ -21,47 +25,47 @@ const cards: Card[] = [
   },
   {
     num: "02",
-    glyph: "◇",
+    variant: "marketing",
     title: "the marketing operator",
     role: "tracks ads · ships the safe wins",
     blurb:
-      "Watches your campaigns, makes the small obvious changes itself, drafts the risky ones for you, posts a short daily read.",
+      "Watches campaigns, makes the small obvious moves itself, drafts the risky ones for you, posts a short daily read.",
     voice: "“ROAS 3.1, down 14% w/w. one campaign capped early. nothing to ship today.”",
     accent: "amber",
   },
   {
     num: "03",
-    glyph: "▲",
+    variant: "sales",
     title: "the sales analyst",
     role: "reads your calls · spots the pattern",
     blurb:
-      "Pulls call recordings and CRM data every morning, finds what's repeating across deals, asks the question that moves things forward.",
+      "Pulls calls and CRM data every morning, finds what's repeating across deals, asks the question that moves things forward.",
     voice: "“5 of 7 lost deals mentioned price in the last 90s. proposal drafted in #sales.”",
     accent: "steel",
   },
   {
     num: "04",
-    glyph: "◍",
+    variant: "assistant",
     title: "the personal assistant",
     role: "your second brain · in your DMs",
     blurb:
-      "DM it anything. It remembers what you said in March and surfaces the thing you've been quietly worrying about.",
+      "DM it anything. It remembers what you said in March and surfaces what you've been quietly worrying about.",
     voice: "“you said you'd reply to A. by Tuesday. it's Tuesday. want me to draft?”",
     accent: "plum",
   },
   {
     num: "05",
-    glyph: "▼",
+    variant: "codereview",
     title: "the code-review companion",
     role: "watches your PRs · in your own words",
     blurb:
-      "Reads pull requests and reminds you of decisions you've already made — quoted back in the words you used at the time.",
+      "Reads pull requests and reminds you of decisions you've already made — quoted back in the words you used.",
     voice: "“we agreed last sprint not to swallow exceptions in the worker. this PR does it twice.”",
     accent: "gold",
   },
   {
     num: "06",
-    glyph: "◆",
+    variant: "standup",
     title: "the standup runner",
     role: "DMs the team · writes the post",
     blurb:
@@ -107,19 +111,23 @@ export function AgentTypes() {
             return (
               <article
                 key={c.num}
-                className="group relative flex flex-col gap-6 bg-ink-2 p-7 transition-colors duration-300 hover:bg-ink-3"
+                className="group relative flex flex-col gap-5 bg-ink-2 p-6 transition-colors duration-300 hover:bg-ink-3 sm:p-7"
               >
-                <header className="flex items-start justify-between">
+                {/* Big illustration panel */}
+                <div
+                  className={`relative -mx-6 -mt-6 overflow-hidden rounded-t-[inherit] sm:-mx-7 sm:-mt-7 ${a.bg}`}
+                >
                   <div
-                    className={`flex h-12 w-12 items-center justify-center rounded-xl ${a.bg} ring-1 ${a.ring} text-2xl ${a.text}`}
+                    className="dot-grid absolute inset-0 opacity-50"
                     aria-hidden
-                  >
-                    {c.glyph}
+                  />
+                  <div className="relative aspect-[16/10] w-full">
+                    <AgentEmblem variant={c.variant} />
                   </div>
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-paper-faint">
+                  <span className="absolute right-4 top-4 font-mono text-[11px] uppercase tracking-[0.18em] text-paper-faint">
                     /{c.num}
                   </span>
-                </header>
+                </div>
 
                 <div>
                   <h3 className="serif-italic text-[24px] font-medium leading-tight text-paper">

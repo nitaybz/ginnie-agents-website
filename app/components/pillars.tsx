@@ -1,3 +1,5 @@
+import { MemoryStack, IsolationDiagram, SlackIdentityCard } from "./pillar-diagrams";
+
 type Pillar = {
   index: string;
   kicker: string;
@@ -44,7 +46,8 @@ const pillars: Pillar[] = [
       </>
     ),
     body:
-      "Some things you tell an agent should stick around forever. Some lessons take a few weeks to settle. Some details only matter when you ask. Three layers of memory let yours learn over time — without forgetting and without bloating into a context-window mess.",
+      "Three layers, two of them always in the agent's head, one a journal it pulls from when you ask. Yours grows up — without forgetting and without bloating its context window into soup.",
+    detail: <MemoryStack />,
   },
   {
     index: "03",
@@ -57,7 +60,8 @@ const pillars: Pillar[] = [
       </>
     ),
     body:
-      "Every session runs in its own clean container with only its own files — its own prompt, its own memory, its own credentials. Your marketing agent and your ops agent share a host without ever meeting each other or wandering into your laptop's secrets.",
+      "Every session runs in its own clean container, mounted only with its own files. Neighbors can't see each other. The host can't be read either. Your marketing and ops agents share a box without ever meeting.",
+    detail: <IsolationDiagram />,
   },
   {
     index: "04",
@@ -70,7 +74,8 @@ const pillars: Pillar[] = [
       </>
     ),
     body:
-      "Each agent has its own Slack identity, its own channel, its own avatar. They @mention you back, react to messages, hold threads. You talk to them in DMs the way you'd talk to anyone else on the team — and they know who's talking.",
+      "Its own Slack identity, its own channel, its own avatar. @mentions, threads, reactions — all of it. You talk to them the way you'd talk to anyone else.",
+    detail: <SlackIdentityCard />,
   },
 ];
 
