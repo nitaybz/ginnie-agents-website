@@ -38,7 +38,7 @@ const lines: Line[] = [
 ];
 
 const prereqs = [
-  { label: "Claude Code", hint: "with a Max subscription" },
+  { label: "Claude Code", hint: "subscription or API key" },
   { label: "Docker", hint: "20+" },
   { label: "Node.js", hint: "20+" },
   { label: "Slack", hint: "a workspace you can install apps in" },

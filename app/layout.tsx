@@ -28,7 +28,7 @@ const mono = Geist_Mono({
 const SITE_URL = "https://ginnie-agents.vercel.app";
 const TITLE = "ginnie-agents — AI teammates for your Slack";
 const DESCRIPTION =
-  "Open-source framework for AI teammates that live in your Slack. Set up entirely from inside Claude Code. No API keys, no UI, no managed service.";
+  "Open-source framework for AI teammates that live in your Slack. Set up entirely from inside Claude Code. No UI, no managed service.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
